@@ -1,8 +1,37 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
+import { CurrencyPipe } from '@angular/common';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { environment } from 'ng-zorro-antd/core/environments';
+import { provideNzI18n, pt_BR } from 'ng-zorro-antd/i18n';
+import { NzModalService } from 'ng-zorro-antd/modal';
+import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
+import { BooleanFormatPipe } from './pipes/booleanFormat.pipe';
+import { DateFormatPipe } from './pipes/dateFormat.pipe';
+import { provideNzIcons } from './icons-provider';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+    NzModalService,
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideClientHydration(),
+    provideNzIcons(),
+    provideNzI18n(pt_BR),
+    importProvidersFrom(
+      FormsModule,
+      ReactiveFormsModule,
+      DemoNgZorroAntdModule
+    ),
+    provideAnimationsAsync(),
+    provideHttpClient(/*withInterceptors([authInterceptor])*/),
+    BooleanFormatPipe,
+    DateFormatPipe,
+    CurrencyPipe,
+  ]
 };

@@ -1,0 +1,53 @@
+<div class="login-container">
+  <div class="login-card">
+    <div class="heading-container">
+      <img src="../../../assets/icons/logo.svg" alt="">
+      <div class="heading main-heading">Sistema</div>
+    </div>
+
+    <div class="content">
+      <div class="main-heading">Acesso a área restrita</div>
+      <p class="highlight">Olá, bem-vindo(a)!</p>
+      <p class="highlight">Por favor, insira suas credenciais para acessar sua conta.</p>
+    </div>
+
+    <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="onSubmit()">
+    
+      <nz-form-item class="custom-form-item">
+        <nz-form-label nzFor="username" nzRequired>Usuário</nz-form-label>
+        <nz-form-control nzErrorTip="Campo Obrigatório">
+          <nz-input-group [nzSuffix]="userIconTemplate">
+            <input nz-input id="username" formControlName="username" [nzSize]="'large'" placeholder="Insira seu usuário de rede" maxlength="50" [disabled]="loading > 0" />
+          </nz-input-group>
+          <ng-template #userIconTemplate>
+            <span nz-icon nzType="user"></span>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    
+      <nz-form-item class="custom-form-item">
+        <nz-form-label nzFor="password" nzRequired>Senha</nz-form-label>
+        <nz-form-control nzErrorTip="Campo Obrigatório">
+          <nz-input-group [nzSuffix]="eyeIconTemplate">
+            <input nz-input id="password" formControlName="password" [nzSize]="'large'"
+              [type]="showPassword ? 'text' : 'password'" placeholder="Digite sua senha" maxlength="30"
+              [disabled]="loading > 0" maxlength="30" [disabled]="loading > 0" />
+          </nz-input-group>
+          <ng-template #eyeIconTemplate>
+            <span nz-icon [nzType]="showPassword ? 'eye-invisible' : 'eye'" (click)="showPassword = !showPassword"></span>
+          </ng-template>
+        </nz-form-control>
+      </nz-form-item>
+    
+      <nz-form-item class="custom-form-item">
+        <nz-form-control>
+          <button nz-button nzType="primary" type="submit" class="button-save" [disabled]="loading > 0">
+            {{ loginLabel }}
+          </button>
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-alert nzType="error" [nzMessage]="errorMsg" *ngIf="showError"></nz-alert>
+    </form>
+  </div>
+</div>

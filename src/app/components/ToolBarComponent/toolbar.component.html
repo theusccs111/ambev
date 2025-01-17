@@ -1,0 +1,8 @@
+<div class="toolbar" *ngIf="show">
+  <div class="toolbar-content">
+    <button *ngFor="let btn of actionButtons" nz-button [nzType]="btn.nzType" [class]="btn.class" [disabled]="btn.disabled"
+      (click)="btn?.onClick($event)">
+      {{ btn.label }}
+    </button>
+  </div>
+</div>
