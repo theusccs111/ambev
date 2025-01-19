@@ -1,0 +1,30 @@
+<nz-card nzTitle="Filtro" class="card-filter" [nzExtra]="extraTemplate" [ngClass]="{'collapsed': isCollapsed}">
+    <form nz-form [nzLayout]="'inline'" [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!isCollapsed">
+      <div class="filter-row">
+        <nz-form-item class="filter-form-item">
+            <nz-form-control>
+                <nz-select nzShowSearch id="group_type" formControlName="group_type" [nzSize]="'large'"
+                    [nzOptions]="group_types" (ngModelChange)="onSubmit()" nzPlaceHolder="Descrição">
+                </nz-select>
+            </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item class="filter-form-item">
+            <nz-form-control>
+                <input nz-input id="code" formControlName="code" [nzSize]="'large'" (ngModelChange)="onSubmit()"  placeholder="Código" (keydown.enter)="$event.preventDefault()"/>
+            </nz-form-control>
+        </nz-form-item>
+
+        <div class="algn-right">
+          <button nz-button nzType="link" (click)="clearFilters()" [nzSize]="'large'" class="align-right">
+              <span nz-icon nzType="close"></span>
+              Limpar Filtros
+          </button>
+        </div>
+      </div>
+    </form>
+</nz-card>
+
+<ng-template #extraTemplate>
+    <img src="../../../../assets/icons/filter.svg" alt="" (click)="toggleCollapse()" style="cursor:pointer"/>
+</ng-template>

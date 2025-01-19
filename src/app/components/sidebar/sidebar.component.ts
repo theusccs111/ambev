@@ -34,7 +34,6 @@ export class SidebarComponent implements OnInit, OnDestroy {
   constructor(private router: Router, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
-    this.isGestor = this.tokenStorageService.isGestor();
     for (let menu of this.menus)
       this.flatMenus(menu.items);
 

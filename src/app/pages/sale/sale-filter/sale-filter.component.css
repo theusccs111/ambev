@@ -1,0 +1,17 @@
+.filter-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filter-form-item {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.align-right {
+  margin-top: 3px;
+}

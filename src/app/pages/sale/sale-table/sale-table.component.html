@@ -1,0 +1,47 @@
+<nz-card>
+  <ng-template #totalTemplate let-total>{{ total }} resultados encontrados</ng-template>
+
+  <nz-table #basicTable [nzData]="items" [nzFrontPagination]="false" [nzPageSize]="itemsPerPage" [nzTotal]="totalData"
+    [nzLoading]="loading > 0" [nzShowPagination]="true" [nzShowSizeChanger]="true" [nzShowTotal]="totalTemplate"
+    (nzPageIndexChange)="onPageChange($event)" [nzPageIndex]="currentPage" (nzPageSizeChange)="onPageSizeChange($event)">
+    <thead>
+      <tr>
+        @for (column of listOfColumns; track column) {
+        <th class="main-table-header" nz-resizable nzBounds="window" nzPreview [nzWidth]="column.width ?? null"
+          [nzMaxWidth]="300" [nzMinWidth]="60" (nzResizeEnd)="onResize($event, column.title)">
+          <span class="table-header" [ngClass]="[column.className ?? '', column.nzAlign ?? '']"
+            (click)="onSortChange(column)">
+            {{ column.title }}
+            <span class="arrows-container" *ngIf="column.sortFn">
+              <span [ngClass]="{ 'active': column.sortOrder === 'ascend'}" nz-icon nzType="caret-up"
+                nzTheme="fill"></span>
+              <span [ngClass]="{ 'active': column.sortOrder === 'descend'}" nz-icon nzType="caret-down"
+                nzTheme="fill"></span>
+            </span>
+          </span>
+          <nz-resize-handle nzDirection="right" nzCursorType="window"> </nz-resize-handle>
+        </th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of items" class="editable-row">
+        <td [nz-tooltip]="data.description">{{ data.description }} </td>
+        <td [nz-tooltip]="data.code">{{ data.code}}</td>
+        <td [nz-tooltip]="data.value">{{ data.value}}</td>
+        <td class="actions-column-cell">
+          <button nzShape="round" nz-button nz-dropdown nzType="default" nzTrigger="click" [nzDropdownMenu]="menu">
+            <span nz-icon [nzRotate]="90" nzType="ellipsis"></span>
+          </button>
+          <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+              <li nz-menu-item class="delete-menu-item" aria-disabled="!isGestor" (click)="delete(data)">
+                <i nz-icon nzType="delete"></i> Excluir
+              </li>
+            </ul>
+          </nz-dropdown-menu>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</nz-card>

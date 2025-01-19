@@ -1,0 +1,68 @@
+<nz-skeleton [nzLoading]="loading > 0">
+    <div class="modal-content">
+        <h3 class="modal-subtitle">Preencha os campos, atenção os campos com <span class="asterisk">*</span> são obrigatórios.</h3>
+        <form nz-form [nzLayout]="'vertical'" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="div-flex">
+                <nz-form-item class="custom-form-item">
+                    <nz-form-label nzFor="saleNumber" class="bold-label" nzRequired>Sale number</nz-form-label>
+                    <nz-form-control nzErrorTip="Campo Obrigatório">
+                        <input nz-input id="saleNumber" formControlName="saleNumber" nzSize="large"
+                            placeholder="type here..." />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div class="div-flex">
+                <nz-form-item class="custom-form-item">
+                    <nz-form-label nzFor="saleDate" class="bold-label" nzRequired>Sale date</nz-form-label>
+                    <nz-form-control nzErrorTip="Campo Obrigatório">
+                        <nz-date-picker id="saleDate" style="width:100%" formControlName="saleDate"
+                            nzPlaceHolder="" [nzSize]="'large'"></nz-date-picker>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div class="div-flex">
+                <nz-form-item class="custom-form-item">
+                    <nz-form-label nzFor="customerName" class="bold-label" nzRequired>Customer name</nz-form-label>
+                    <nz-form-control nzErrorTip="Campo Obrigatório">
+                        <input nz-input id="customerName" formControlName="customerName" nzSize="large"
+                            placeholder="type here..." />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div class="div-flex">
+                <nz-form-item class="custom-form-item">
+                    <nz-form-label nzFor="totalSaleAmount" class="bold-label" nzRequired>Total Sale Amount</nz-form-label>
+                    <nz-form-control nzErrorTip="Campo Obrigatório">
+                        <nz-input-number id="totalSaleAmount" style="width: 100%;" [nzFormatter]="formatter" 
+                        
+                            formControlName="totalSaleAmount" nzPlaceHolder="type here..." [nzSize]="'large'"></nz-input-number>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <div class="div-flex">
+                <nz-form-item class="custom-form-item">
+                    <nz-form-label nzFor="branch" class="bold-label" nzRequired>branch</nz-form-label>
+                    <nz-form-control nzErrorTip="Campo Obrigatório">
+                        <input nz-input id="branch" formControlName="branch" nzSize="large"
+                            placeholder="type here..." />
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+            <nz-alert nzType="error" [nzMessage]="errorMsg" *ngIf="showError"></nz-alert>
+
+
+            <div class="ant-modal-footer">
+                <button nz-button nzType="default" type="button" (click)="handleCancel()">Cancelar</button>
+                <button nz-button nzType="primary" type="submit" class="button-save">
+                    Salvar
+                </button>
+            </div>
+        </form>
+    </div>
+</nz-skeleton>

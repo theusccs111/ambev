@@ -1,0 +1,21 @@
+.modal-subtitle {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 16px;
+}
+
+.ant-form-item {
+    width: 100%
+}
+
+.ant-input-number {
+    width: 100%
+}
+
+.form-date {
+    width: 100%
+}
+
+.div-flex-between {
+    justify-content: space-between;
+}

@@ -2,7 +2,7 @@ import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } fr
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, registerLocaleData } from '@angular/common';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -14,6 +14,9 @@ import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 import { BooleanFormatPipe } from './pipes/booleanFormat.pipe';
 import { DateFormatPipe } from './pipes/dateFormat.pipe';
 import { provideNzIcons } from './icons-provider';
+import pt from '@angular/common/locales/pt';
+
+registerLocaleData(pt);
 
 export const appConfig: ApplicationConfig = {
   providers: [

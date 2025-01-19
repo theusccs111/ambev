@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
+import { SaleComponent } from './pages/sale/sale/sale.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
@@ -9,22 +10,16 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-        path: '',
-        component: HomeComponent,
+        path: 'sale',
+        component: SaleComponent,
 
-        // data: {
-        //     title: 'Dashboard',
-        //     pathParent: 'Relatórios',
-        //     path: ' / Dashboard',
-        //     info: 'Obtenha uma visão consolidada dos principais indicadores no Dashboard, facilitando a tomada de decisões estratégicas.'
-        // },
+        data: {
+            title: 'Sales',
+            pathParent: 'Begin',
+            path: ' / Sales',
+            info: 'Make sales here'
+        },
 
         // canActivate: [AuthGuard]
-    },
-
-    {
-        path: 'vendas',
-        component: HomeComponent,
-
     }
 ];

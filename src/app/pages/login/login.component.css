@@ -25,6 +25,11 @@
   padding-bottom: 48px;
 }
 
+.login-card .heading-container img {
+  height: 150px; /* Ajusta a altura da logo para coincidir com a altura da linha do texto */
+  margin-right: 0.5em; /* Adiciona um espaço entre a logo e o texto */
+}
+
 .login-card .content {
   display: flex;
   flex-direction: column;
@@ -64,3 +69,5 @@
   float: right;
   border-radius: 20px;
 }
+
+

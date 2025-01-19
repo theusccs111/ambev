@@ -7,26 +7,10 @@
     </div>
 
     <div class="right-section">
-      <div class="block-screen">
-        <button nz-button nzType="text" (click)="abrirScreenSaver()">
-          <i nz-icon nzType="lock" class="lock"></i>
-          <span>Bloquear Tela</span>
-        </button>
-      </div>
-
-      <div class="notifications" (click)="goToNotifications()">
-        <a>
-          <nz-badge nzDot [nzShowDot]="hasNotifications()" [nzOffset]="[-5,5]">
-            <i nz-icon nzType="bell" class="bell" [ngClass]="hasNotifications() ? 'is-notification' : 'no-notification'" ></i>
-          </nz-badge>
-        </a>
-      </div>
-
       <div class="user-info">
         <img class="user-avatar" src="../../../../assets/icons/user.svg" alt="User Avatar">
         <span class="username">
           <p class="user"> {{ username }} </p>
-          <p> {{ profile }} </p>
         </span>
       </div>
 
@@ -34,9 +18,3 @@
     </div>
   </header>
 </div>
-
-<nz-modal [(nzVisible)]="isScreenSaverVisible" [nzMaskClosable]="false" [nzNoAnimation]="true" [nzClosable]="false" [nzFooter]="null">
-  <ng-container *nzModalContent>
-    <app-login [isScreenSaver]="true"></app-login>
-  </ng-container>
-</nz-modal>

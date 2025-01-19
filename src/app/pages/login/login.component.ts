@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
       this.showError = false;
       let data = this.form.value;
       this.loading++;
-      window.location.href = '/';
+      window.location.href = '/sale';
       // if(this.isScreenSaver){
       //   const user = this.tokenStorageService.getUser();
 
