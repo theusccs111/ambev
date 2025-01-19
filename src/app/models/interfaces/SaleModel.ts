@@ -9,5 +9,4 @@ export default interface SaleModel {
     branch: string; 
     
     products: ProductModel[]; 
-    isCancelled: boolean; 
 }

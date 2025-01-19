@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sale-header.component.html',
   styleUrl: './sale-header.component.css',
   standalone: true,
-  imports: [SaleModalComponent, CommonModule]
+  imports: [CommonModule]
 })
 export class SaleHeaderComponent implements OnInit {
 
@@ -20,7 +20,7 @@ export class SaleHeaderComponent implements OnInit {
   novo() {
     const modal = this.nzDrawerService.create({
       nzTitle: 'Cadastrar Venda',
-      nzWidth: 736,
+      nzWidth: 1000,
       nzContent: SaleModalComponent,
       nzMaskClosable: false
     });

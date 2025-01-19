@@ -115,7 +115,6 @@ export class SaleTableComponent implements OnInit {
   }
 
   onSortChange(column: NzColumn): void {
-    // Cycle through 'ascend', 'descend', and 'null'
     if (column.sortOrder === 'ascend') {
       column.sortOrder = 'descend';
     } else if (column.sortOrder === 'descend') {
@@ -124,17 +123,15 @@ export class SaleTableComponent implements OnInit {
       column.sortOrder = 'ascend';
     }
 
-    // Reset other columns' sortOrder
     this.listOfColumns.forEach((col) => {
       if (col.field !== column.field) {
         col.sortOrder = null;
       }
     });
 
-    // Update filters and get data
     this.filters.sort_order = column.sortOrder === 'ascend' ? 'asc' : column.sortOrder === 'descend' ? 'desc' : null;
     this.filters.sort_field = this.filters.sort_order ? column.field : null;
-    this.currentPage = 1; // Reset to the first page when sorting
+    this.currentPage = 1; 
     this.getData(this.filters);
   }
 

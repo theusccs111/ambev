@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ModalService } from '../../../services/modal.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -27,6 +27,7 @@ import { FormattingService } from '../../../services/formatting.service';
 export class SaleModalComponent
 {
     form!: FormGroup ;
+    
     formChanged: boolean = false;
     loading = 0;
     showError: boolean = false;
@@ -53,11 +54,51 @@ export class SaleModalComponent
             saleDate: [null, Validators.required],
             customerName: [null, Validators.required],
             totalSaleAmount: [null, Validators.required],
-            branch: [null, Validators.required]
+            branch: [null, Validators.required],
+            products: this.fb.array([]),
+            description : [null],
+            quantity : [null],
+            unitPrice : [null],
+            discount : [null],
+            totalAmount : [null],
+            isCancelled : [0],
         });
         this.form.valueChanges.subscribe(() => {
             this.formChanged = true;
         });
+    }
+
+    get products(): FormArray {
+        return this.form.get('products') as FormArray;
+    }
+
+    addItem(): void {
+        let data = this.form.value;
+        
+        console.log(data)
+        if (data.description && data.quantity && data.unitPrice && data.discount && data.totalAmount && data.isCancelled) {
+            this.products.push(this.fb.group({
+                id: [0],
+                description: [data.description],
+                quantity: [data.quantity],
+                unitPrice: [data.unitPrice],
+                discount: [data.discount],
+                totalAmount: [data.totalAmount],
+                isCancelled: [data.isCancelled],
+            }));
+            this.form.patchValue({
+                description: null,
+                quantity: null,
+                unitPrice: null,
+                discount: null,
+                totalAmount: null,
+                isCancelled: 0,
+            });
+        }
+    }
+
+    deleteItem(index: number): void {
+        this.products.removeAt(index);
     }
 
 

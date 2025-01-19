@@ -20,6 +20,19 @@ export const routes: Routes = [
             info: 'Make sales here'
         },
 
-        // canActivate: [AuthGuard]
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'sale',
+        component: SaleComponent,
+
+        data: {
+            title: 'Sales',
+            pathParent: 'Begin',
+            path: ' / Sales',
+            info: 'Make sales here'
+        },
+
+        canActivate: [AuthGuard]
     }
 ];

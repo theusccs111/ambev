@@ -44,6 +44,15 @@ export class TokenStorageService {
     this.setToken(user.access_token)
   }
 
+  public async saveUser(user: any): Promise<any> {
+    user.authenticated = true;
+
+    window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+
+    this.setToken(user.access_token)
+  }
+
   public getToken(): any {
     return sessionStorage.getItem(TOKEN_KEY);
   }

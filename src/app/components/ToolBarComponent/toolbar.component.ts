@@ -7,7 +7,7 @@ import { DemoNgZorroAntdModule } from '../../ng-zorro-antd.module';
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.css'], // Corrigir para 'styleUrls'
+  styleUrls: ['./toolbar.component.css'], 
   standalone: true,
   imports: [
     CommonModule,

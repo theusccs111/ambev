@@ -54,7 +54,6 @@ export class ModalService {
 
         const modal = this.nzModalService.warning({
             nzTitle: title,
-            // nzContent: content,
             nzContent: content,
             nzOkText: okText,
             nzOkDanger: okDanger,

@@ -33,7 +33,6 @@ export class AppComponent implements OnInit, OnChanges {
       if (event instanceof NavigationEnd) {
 
         let activeRoute = event.url;
-        //(event);
         if (event.url === '/login') {
           this.isShowSideBar = false;
         } else {

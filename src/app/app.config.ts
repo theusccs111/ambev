@@ -15,6 +15,8 @@ import { BooleanFormatPipe } from './pipes/booleanFormat.pipe';
 import { DateFormatPipe } from './pipes/dateFormat.pipe';
 import { provideNzIcons } from './icons-provider';
 import pt from '@angular/common/locales/pt';
+import { AuthGuard } from './guards/auth.guard';
+import { authInterceptor } from './interceptors/auth.interceptor';
 
 registerLocaleData(pt);
 
@@ -32,9 +34,10 @@ export const appConfig: ApplicationConfig = {
       DemoNgZorroAntdModule
     ),
     provideAnimationsAsync(),
-    provideHttpClient(/*withInterceptors([authInterceptor])*/),
+    provideHttpClient(withInterceptors([authInterceptor])),
     BooleanFormatPipe,
     DateFormatPipe,
     CurrencyPipe,
+    AuthGuard,
   ]
 };

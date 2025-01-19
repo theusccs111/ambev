@@ -23,7 +23,6 @@ import { TokenStorageService } from '../../services/token.storage.service';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   isGestor: boolean = false;
-  //searchText: string = "";
   isSidebarOpen = false;
   subMenuStates: { [key: string]: boolean } = {};
   menus: Menu[] = Menus as Menu[];
